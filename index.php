@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
-    <title>Assured Visible Eagle</title>
+    <title>Ambato Paraíso Escondido</title>
     <meta property="og:title" content="Assured Visible Eagle" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="components/imagenes/logo.png"/> 
 
     <style data-tag="reset-style-sheet">
       html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
@@ -392,6 +393,7 @@
       href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
       data-tag="font"
     />
+    
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
@@ -420,20 +422,23 @@
       <link href="./index.css" rel="stylesheet" />
 
       <div class="home-container">
+        hola
         <div class="home-header">
+         
           <header
             data-thq="thq-navbar"
-            class="navbarContainer home-navbar-interactive"
-          >
-            <span class="logo">ECUADOR</span>
+            class="navbarContainer home-navbar-interactive">
+
+            <span class="logo"><img src="components/imagenes/logo.png" alt="Logo" width="70" height="75"></span>
             <div class="home-container01">
               <div data-thq="thq-navbar-nav" class="home-desktop-menu">
                 <div class="home-buttons"></div>
               </div>
+              
             </div>
-            <button class="buttonFilled">Register</button>
+            <img src="components/imagenes/logo1.png" alt="Logo" width="180" height="100"></span>
             <div data-thq="thq-burger-menu" class="home-burger-menu">
-              <svg viewBox="0 0 1024 1024" class="home-icon socialIcons">
+              <svg viewBox="0 0 1022 1022" class="home-icon socialIcons">
                 <path
                   d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
                 ></path>
@@ -502,7 +507,7 @@
               <span class="home-hero-sub-heading bodyLarge">
                 <span>
                   <span>
-                    <span>Experience the Magic of South America</span>
+                    <span>Experimenta la magia de Sudamérica</span>
                     <span></span>
                   </span>
                   <span>
@@ -522,12 +527,12 @@
                 </span>
               </span>
               <h1 class="home-hero-heading heading1">
-                Discover the Beauty of Ecuador
+              Descubre el Encanto de Ambato
               </h1>
-              <span class="bodySmall">Explore Ecuador with our free plan</span>
+              <span class="bodySmall">Una vista a los diferentes puntos  turísticos que existe en la ciudad de Ambato.</span>
               <div class="home-btn-group">
-                <button class="buttonFilled">Explore Now</button>
-                <button class="buttonFlat">Learn More&nbsp;→</button>
+                
+                <button class="buttonFlat"></i></button>
               </div>
             </div>
           </div>

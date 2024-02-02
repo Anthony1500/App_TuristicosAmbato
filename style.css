@@ -135,12 +135,15 @@
   padding-right: var(--dl-space-space-oneandhalfunits);
   padding-bottom: var(--dl-space-space-halfunit);
   background: url('components/icons/down-arrow.png') no-repeat;
-    width: 75px; /* Ajusta esto al ancho de tu imagen */
-    height: 75px; /* Ajusta esto a la altura de tu imagen */
-    border: none;
-    cursor: pointer;
+  background-position: center; /* Centra el fondo horizontal y verticalmente */
+  background-size: 50%; /* Ajusta el tamaño del icono */
+  
+  height: 75px; /* Ajusta esto a la altura de tu imagen */
+  border: none;
+  cursor: pointer;
   animation: wiggle 2s linear infinite;
 }
+
 @keyframes wiggle {
   0%, 7% {
     transform: rotateZ(0) translateY(0);

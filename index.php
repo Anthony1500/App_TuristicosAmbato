@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="es">
   <head>
     <title>Ambato Paraíso Escondido</title>
@@ -531,7 +531,6 @@
               </h1>
               <span class="bodySmall">Una vista a los diferentes puntos  turísticos que existe en la ciudad de Ambato.</span>
               <div class="home-btn-group">
-                
                 <button class="buttonFlat"></i></button>
               </div>
             </div>

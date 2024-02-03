@@ -144,6 +144,7 @@
   animation: wiggle 2s linear infinite;
 }
 
+
 @keyframes wiggle {
   0%, 7% {
     transform: rotateZ(0) translateY(0);
@@ -167,7 +168,29 @@
     transform: rotateZ(0) translateY(0);
   }
 }
-
+@keyframes wiggle-inverted {
+  0%, 7% {
+    transform: rotateZ(0) translateY(0);
+  }
+  15% {
+    transform: rotateZ(15deg) translateY(-5px); /* Valores invertidos */
+  }
+  20% {
+    transform: rotateZ(-10deg) translateY(-10px); /* Valores invertidos */
+  }
+  25% {
+    transform: rotateZ(10deg) translateY(-5px); /* Valores invertidos */
+  }
+  30% {
+    transform: rotateZ(-6deg) translateY(0);
+  }
+  35% {
+    transform: rotateZ(4deg) translateY(5px); /* Valores invertidos */
+  }
+  40%, 100% {
+    transform: rotateZ(0) translateY(0);
+  }
+}
 
 .buttonFlat:hover {
   color: var(--dl-color-custom-primary2);
@@ -190,6 +213,13 @@
   flex-direction: row;
   justify-content: flex-start;
   background-color: rgba(255, 255, 255, 0.65);
+  transition: transform 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.featuresCard:hover {
+  /* Aumenta la escala del elemento cuando el mouse pasa por encima */
+  transform: scale(1.1);
 }
 .featuresIcon {
   fill: var(--dl-color-custom-neutral-dark);
@@ -274,6 +304,21 @@
   padding-bottom: var(--dl-space-space-sixunits);
   justify-content: center;
   background-color: var(--dl-color-custom-neutral-light);
+}
+.scroll-to-top-button {
+  /* Style the button as desired */
+  position: fixed;
+  bottom: 20px; /* Adjust according to your layout */
+  right: 20px; /* Adjust according to your layout */
+  z-index: 999; /* Ensure visibility above other elements */
+  background: url('components/icons/up-arrow.png') no-repeat;
+  background-position: center; /* Centra el fondo horizontal y verticalmente */
+  background-size: 50%; /* Ajusta el tamaño del icono */
+  
+  height: 75px; /* Ajusta esto a la altura de tu imagen */
+  border: none;
+  cursor: pointer;
+  animation: wiggle-inverted 2s linear infinite;
 }
 .pricingContainer {
   gap: var(--dl-space-space-twounits);
@@ -364,6 +409,7 @@
   font-family: Rubik;
   font-weight: 700;
   line-height: 150%;
+
 }
 .logo {
   font-size: 2em;

@@ -418,9 +418,11 @@
       }
     </style>
   </head>
+ 
   <body >
+  
     <link rel="stylesheet" href="./style.css" />
-    
+   
     <div>
       <link href="./index.css" rel="stylesheet" />
       
@@ -482,7 +484,10 @@
           </div>          
         </div>
         
-        <div class="home-features" >        
+        <div class="home-features" >  
+          <div style="position: relative;">
+    <iframe id="miFrame" src="modal/index.php" ></iframe>
+  </div>      
           <div   class="featuresContainer"  >
           <div class="home-features1" >                    
               <div class="home-container03"  >
@@ -583,11 +588,13 @@
                     </span>
                   </div>
                 </div>
-              </div>
+              </div>    
+ 
             </div>
+           
           </div>
-        </div>        
-        
+        </div>            
+</script>
       </div>
     </div>
     <script src="./index.js"></script>

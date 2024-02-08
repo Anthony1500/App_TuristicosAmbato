@@ -63,45 +63,47 @@
       contenedores[i].addEventListener("click", function() {
         // Aquí va el código que se ejecutará cuando se haga clic en el contenedor
         
-      var modal = document.getElementById("miFrame");
+      var modal = document.getElementById("miFrame")
       
-      
+      // Obtener el título y imagen  del contenedor
+      var titulo = this.querySelector(".feature-card-text").textContent;
+      var rutaImagen = this.querySelector(".featuresIcon").src;
       
       
       var span = document.getElementsByClassName("cerrar")[0];
-    
+     
+       
+       
     // Cuando el usuario haga clic en el botón, abre el modal 
-      
-      document.getElementById("miFrame").src = "modal/index.php";
-      document.getElementById("miFrame").style.display = "block";
-      //modal.style.display = "block";
+      document.getElementById("miFrame").src = "components/modal/index.php";
+      document.getElementById("miFrame").style.display = "flex";
+      modal.src = "components/modal/index.php?titulo=" + encodeURIComponent(titulo)+"&imagen="+ encodeURIComponent(rutaImagen);
+            
+     
+      document.body.style.overflow = "hidden";
       
       modal.onload = function() {
         // Accede a un elemento en la página del iframe
         
         var btn = modal.contentWindow.document.getElementById("modalclose");
+        
+      
         if (btn) {
           // Cuando el usuario haga clic en  (x), cierra el modal
           btn.onclick = function() {
             document.getElementById("miFrame").src = "";
             document.getElementById("miFrame").style.display = "none";
             modal.style.display = "none";
+            document.body.style.overflow = "auto";
           }
         } 
-          
-        
+       
+       
       };
       
       
-      
-      // Cuando el usuario haga clic en cualquier lugar fuera del modal, cierra el modal
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          document.getElementById("miFrame").src = "";
-          document.getElementById("miFrame").style.display = "none";
-          modal.style.display = "none";
-        }
-      }
 
     });
   }
+
+  

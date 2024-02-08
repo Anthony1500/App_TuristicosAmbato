@@ -436,4 +436,16 @@
   z-index: 1000;
   border: none; /* Elimina el borde del iframe */
   background-color: transparent;
+
+  transition: opacity 1s ease-out;
+  animation-name: entrada;
+  animation-duration: 2s; /* Duración de la animación */
 }
+@keyframes entrada {
+  0%   {opacity: 0;}
+  100% {opacity: 1;}
+}
+#miFrame.oculto {
+  opacity: 0;
+}
+

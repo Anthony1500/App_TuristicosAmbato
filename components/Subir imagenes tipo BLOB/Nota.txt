@@ -1,0 +1,7 @@
+Recuerda
+
+-Cambiar la información de la base de datos en función a las necesidades de subir imágenes,
+ en el archivo upload.php
+
+-Este método solo permite subir imágenes a la base de datos por lo que, 
+los demás campos estarán  vacíos.

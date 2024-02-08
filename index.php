@@ -486,7 +486,7 @@
         
         <div class="home-features" >  
           <div style="position: relative;">
-    <iframe id="miFrame" src="modal/index.php" ></iframe>
+    <iframe id="miFrame" src="components/modal/index.php" ></iframe>
   </div>      
           <div   class="featuresContainer"  >
           <div class="home-features1" >                    

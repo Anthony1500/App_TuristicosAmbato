@@ -26,7 +26,7 @@ if(isset($_POST["submit"])){
         $dataTime = date("Y-m-d H:i:s");
         
         //Insert image content into database
-        $insert = $db->query("INSERT into parques (imagen) VALUES ('$imgContent')");
+        $insert = $db->query("INSERT into restaurantes (imagen) VALUES ('$imgContent')");
         if($insert){
             echo "File uploaded successfully.";
         }else{
@@ -36,4 +36,3 @@ if(isset($_POST["submit"])){
         echo "Please select an image file to upload.";
     }
 }
-?>

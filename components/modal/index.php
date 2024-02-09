@@ -71,7 +71,7 @@ if ($result === false) {
 ?>
 	
 <li class="nombre number" onclick="abrirIframe('<?php echo $row['id']; ?>', '<?php echo $row['nombre']; ?>')">
-	        <div class="thumb"><img src="view.php?id=<?php echo $row['id']; ?>"></div>
+	        <div class="thumb"><img src="view.php?id=<?php echo $row['id']; ?>&titulo=<?php echo $titulo; ?>"></div>
             <div class="description">
 			<p><?php echo $row['descripcion']; ?><br><a><?php echo $row['nombre']; ?></a></p>
             </div>

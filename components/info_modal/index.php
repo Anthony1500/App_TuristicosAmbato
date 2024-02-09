@@ -77,7 +77,7 @@ if ($result === false) {
     foreach ($result as $row) {		
         echo "<h2>" . $row['nombre'] . "</h2>";
         echo "<p>" . $row['descripcion'] . "</p>";
-		echo "<p><img src='../modal/view.php?id=" . $row['id'] . "'></p>";
+		echo "<p><img src='../modal/view.php?id=" . $row['id'] . "&titulo=" . $titulo . "'></p>";
         echo "<h2>Ubicación</h2>";
 		echo "<div style='position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid black;'>
         " . $row['ubicacion'] . "</div>";

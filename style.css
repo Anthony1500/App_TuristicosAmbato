@@ -307,16 +307,16 @@
   background-color: var(--dl-color-custom-neutral-light);
 }
 .scroll-to-top-button {
-  /* Style the button as desired */
-  position: fixed;
-  bottom: 20px; /* Adjust according to your layout */
-  right: 20px; /* Adjust according to your layout */
-  z-index: 999; /* Ensure visibility above other elements */
-  background: url('components/icons/up-arrow.png') no-repeat;
-  background-position: center; /* Centra el fondo horizontal y verticalmente */
-  background-size: 50%; /* Ajusta el tamaño del icono */
   
-  height: 75px; /* Ajusta esto a la altura de tu imagen */
+  position: fixed;
+  bottom: 20px; 
+  right: 20px; 
+  z-index: 999;
+  background: url('components/icons/up-arrow.png') no-repeat;
+  background-position: center; 
+  background-size: 50%;
+  
+  height: 75px;
   border: none;
   cursor: pointer;
   animation: wiggle-inverted 2s linear infinite;
@@ -435,12 +435,12 @@
   width: 100%;
   height: 100%;
   z-index: 1000;
-  border: none; /* Elimina el borde del iframe */
+  border: none; 
   background-color: transparent;
 
   transition: opacity 1s ease-out;
   animation-name: entrada;
-  animation-duration: 2s; /* Duración de la animación */
+  animation-duration: 2s; 
 }
 @keyframes entrada {
   0%   {opacity: 0;}

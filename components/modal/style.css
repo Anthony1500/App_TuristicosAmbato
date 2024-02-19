@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-/* Some basic CSS overrides */
 body {
   line-height: 1.5;
   min-height: 100vh;
@@ -26,7 +25,7 @@ a {
   color: inherit;
 }
 
-/* End basic CSS override */
+
 * {
   scrollbar-width: 0;
 }

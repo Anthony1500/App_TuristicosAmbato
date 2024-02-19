@@ -1,16 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
-/*html, body {
-  position: relative;
-  min-height: 92vh;  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to right, #ebc9c9, #cee9ce, #ecc8c8);
-}*/
+
 body {
   min-height: 92vh;  
   display: flex;

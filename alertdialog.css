@@ -7,10 +7,10 @@
   width: 40%; /* Ancho completo */
   height: auto; /* Alto automático */
   overflow: auto; /* Habilitar scroll si es necesario */
-  animation: slide-in 0.5s forwards; /* Agrega esta línea */
+  animation: slide-in 0.5s forwards; 
   opacity: 1; /* Asegúrate de que el modal sea completamente visible al inicio */
   transition: opacity 2s; /* Transición de 2 segundos para el cambio de opacidad */
-  animation: slide-in 0.5s forwards; /* Agrega esta línea */
+  animation: slide-in 0.5s forwards; 
 }
 .alertdialog.fade-out {
   animation: fade-out 2s forwards;

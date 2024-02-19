@@ -1,38 +1,31 @@
 <?php
-if(isset($_POST["submit"])){
+if (isset($_POST["submit"])) {
     $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if($check !== false){
-        $image = $_FILES['image']['tmp_name'];
-        $imgContent = addslashes(file_get_contents($image));
-
-        /*
-         * Insert image data into database
-         */
-        
-        //DB details
-        $dbHost     = 'localhost';
-        $dbUsername = 'root';
-        $dbPassword = '';
-        $dbName     = 'ambatolugaresdb';
-        
-        //Create connection and select DB
-        $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-        
-        // Check connection
-        if($db->connect_error){
-            die("Connection failed: " . $db->connect_error);
+    if ($check !== false) {
+        // Validar tipo de archivo
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!in_array($_FILES['image']['type'], $allowedTypes)) {
+            echo "Solo se permiten archivos de tipo JPG, PNG o GIF.";
+            exit();
         }
-        
-        $dataTime = date("Y-m-d H:i:s");
-        
-        //Insert image content into database
-        $insert = $db->query("INSERT into museos (imagen) VALUES ('$imgContent')");
-        if($insert){
-            echo "File uploaded successfully.";
-        }else{
-            echo "File upload failed, please try again.";
-        } 
-    }else{
-        echo "Please select an image file to upload.";
+        $dbHost = 'localhost'; $dbUsername = 'root'; $dbPassword = ''; $dbName = 'ambatolugaresdb'; 
+        // Crear conexión PDO
+        $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsername, $dbPassword);
+
+        // Preparar consulta SQL
+        $stmt = $db->prepare("INSERT INTO museos (imagen) VALUES (?)");
+        $stmt->bindParam(1, $imgContent, PDO::PARAM_LOB);
+
+        // Leer la imagen en binario
+        $imgContent = file_get_contents($_FILES['image']['tmp_name']);
+
+        // Ejecutar la consulta
+        if ($stmt->execute()) {
+            echo "Archivo subido exitosamente.";
+        } else {
+            echo "Error al subir el archivo.";
+        }
+    } else {
+        echo "Por favor, seleccione un archivo de imagen.";
     }
 }

@@ -1,109 +1,175 @@
-  function handleButtonClick() {
-    const featuresElement = document.getElementById("features");
-    const home_container = document.getElementById("home_container");
-    const buttonOffset = this.getBoundingClientRect().top; // 'this' se refiere al botón
-  
-    window.scrollTo({
-      top: featuresElement.offsetTop - buttonOffset,
-      behavior: "smooth"
-    });
-  }
-  function handleButtonClick2() {
-    const featuresElement = document.getElementById("features");
-    const home_container = document.getElementById("home_container");
-    const buttonOffset = this.getBoundingClientRect().top; // 'this' se refiere al botón
-  
-    window.scrollTo({
-      top: home_container.offsetTop - buttonOffset,
-      behavior: "smooth"
-    });
-  }
-  
-  function observeContainer(container1,container2) {
-    var btn = document.getElementById("buttonhidd");
-    const observer1 = new IntersectionObserver((entries, observer1) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            btn.style.display = "";
-        }
-      });
-    });
-    const observer2 = new IntersectionObserver((entries, observer2) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-           btn.style.display = "none";
-            
-          }
-        });
-      });
-  
-    observer1.observe(container1);
-    observer2.observe(container2);
-  }
-  //window.onscroll = function() {scrollFunction()};
+console.clear();
+const loginBtn = document.getElementById('login');
+const signupBtn = document.getElementById('signup');
 
+// Selecciona los elementos del mensaje de error
+const errorMessageSignup = document.querySelector('.error-message-signup');
+const errorMessageLogin = document.querySelector('.error-message-login');
 
+function hideErrorMessages() {
+  // Oculta los mensajes de error
+  errorMessageSignup.style.display = 'none';
+  errorMessageLogin.style.display = 'none';
+}
 
-  const container1 = document.querySelector(".home-features");
-  const container2 = document.querySelector(".home-btn-group");
-  // Observar el contenedor
-  observeContainer(container1,container2);
-  
-  var button = document.querySelector(".home-btn-group button");  
-  button.addEventListener("click", handleButtonClick);
-  var button2 = document.getElementById("buttonhidd");
-  button2.addEventListener("click", handleButtonClick2);
-  
-  // Obtén los contenedores
-  var contenedores = document.getElementsByClassName("feature-card-feature-card");
-  
-  // Para cada contenedor...
-  for (var i = 0; i < contenedores.length; i++) {
-      // Agrega un controlador de eventos de clic
-      contenedores[i].addEventListener("click", function() {
-        // Aquí va el código que se ejecutará cuando se haga clic en el contenedor
-        
-      var modal = document.getElementById("miFrame")
-      
-      // Obtener el título y imagen  del contenedor
-      var titulo = this.querySelector(".feature-card-text").textContent;
-      var rutaImagen = this.querySelector(".featuresIcon").src;
-      
-      
-      var span = document.getElementsByClassName("cerrar")[0];
-     
-       
-       
-    // Cuando el usuario haga clic en el botón, abre el modal 
-      document.getElementById("miFrame").src = "components/modal/index.php";
-      document.getElementById("miFrame").style.display = "flex";
-      modal.src = "components/modal/index.php?titulo=" + encodeURIComponent(titulo)+"&imagen="+ encodeURIComponent(rutaImagen);
-            
-     
-      document.body.style.overflow = "hidden";
-      
-      modal.onload = function() {
-        // Accede a un elemento en la página del iframe
-        
-        var btn = modal.contentWindow.document.getElementById("modalclose");
-        
-      
-        if (btn) {
-          // Cuando el usuario haga clic en  (x), cierra el modal
-          btn.onclick = function() {
-            document.getElementById("miFrame").src = "";
-            document.getElementById("miFrame").style.display = "none";
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-          }
-        } 
-       
-       
-      };
-      
-      
+loginBtn.addEventListener('click', (e) => {
+  let parent = e.target.parentNode.parentNode;
+  Array.from(e.target.parentNode.parentNode.classList).find((element) => {
+    if(element !== "slide-up") {
+      parent.classList.add('slide-up')
+    }else{
+      signupBtn.parentNode.classList.add('slide-up')
+      parent.classList.remove('slide-up')
+    }
+  });
+  hideErrorMessages(); // Oculta los mensajes de error al hacer clic
+});
 
-    });
+signupBtn.addEventListener('click', (e) => {
+  let parent = e.target.parentNode;
+  Array.from(e.target.parentNode.classList).find((element) => {
+    if(element !== "slide-up") {
+      parent.classList.add('slide-up')
+    }else{
+      loginBtn.parentNode.parentNode.classList.add('slide-up')
+      parent.classList.remove('slide-up')
+    }
+  });
+  hideErrorMessages(); // Oculta los mensajes de error al hacer clic
+});
+
+// Agrega controladores de eventos a los campos de entrada
+document.querySelector('.signup .input[type="text"]').addEventListener('input', validateFormsignup);
+document.querySelector('.signup .input[type="email"]').addEventListener('input', validateFormsignup);
+document.querySelector('.signup .input[type="password"]').addEventListener('input', validateFormsignup);
+document.querySelector('.login .input[type="email"]').addEventListener('input', validateFormlogin);
+document.querySelector('.login .input[type="password"]').addEventListener('input', validateFormlogin);
+
+function validateFormsignup() {
+  var user = document.querySelector('.signup .input[type="text"]').value;
+  var emailSignup = document.querySelector('.signup .input[type="email"]').value;
+  var passwordSignup = document.querySelector('.signup .input[type="password"]').value;
+
+  
+  errorMessageSignup.textContent = ''; // Limpiar cualquier mensaje de error anterior
+  errorMessageSignup.classList.remove('active'); // Ocultar el mensaje de error
+  errorMessageSignup.style.display = 'none';
+
+  // Validación para el registro
+  if (user == "" || emailSignup == "" || passwordSignup == "") {
+    errorMessageSignup.textContent = "Por favor, llena todos los campos";
+    errorMessageSignup.classList.add('active'); // Mostrar el mensaje de error
+	errorMessageSignup.style.display = 'block';
+    return false;
   }
 
+  var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailRegex.test(emailSignup)) {
+    errorMessageSignup.textContent = "Por favor, introduce una dirección de correo electrónico válida";
+    errorMessageSignup.classList.add('active'); // Mostrar el mensaje de error
+	errorMessageSignup.style.display = 'block';
+    return false;
+  }
+
+  if (passwordSignup.length < 8) {
+    errorMessageSignup.textContent = "La contraseña debe tener al menos 8 caracteres";
+    errorMessageSignup.classList.add('active'); // Mostrar el mensaje de error
+	errorMessageSignup.style.display = 'block';
+    return false;
+  }
+
+  return true;
+}
+
+function validateFormlogin() {
+  var emailLogin = document.querySelector('.login .input[type="email"]').value;
+  var passwordLogin = document.querySelector('.login .input[type="password"]').value;
+
+  
+  errorMessageLogin.textContent = ''; // Limpiar cualquier mensaje de error anterior
+  errorMessageLogin.classList.remove('active'); // Ocultar el mensaje de error
+  errorMessageLogin.style.display = 'none';
+
+  // Validación para el inicio de sesión
+  if (emailLogin == "" || passwordLogin == "") {
+    errorMessageLogin.textContent = "Por favor, llena todos los campos";
+    errorMessageLogin.classList.add('active'); // Mostrar el mensaje de error
+	  errorMessageLogin.style.display = 'block';
+    return false;
+  }
+
+  var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailRegex.test(emailLogin)) {
+    errorMessageLogin.textContent = "Por favor, introduce una dirección de correo electrónico válida";
+    errorMessageLogin.classList.add('active'); // Mostrar el mensaje de error
+	  errorMessageLogin.style.display = 'block';
+    return false;
+  } 
+
+  return true;
+}
+
+document.querySelector('.login-btn').addEventListener('click', (event) => {
+	event.preventDefault(); // Evita que el formulario se envíe de la manera predeterminada
+  
+	// Captura los datos del formulario
+  const email = document.querySelector('.login input[type="email"]').value;
+  const password = document.querySelector('.login input[type="password"]').value;
+  errorMessageLogin.classList.remove('active'); // Ocultar el mensaje de error
+  errorMessageLogin.style.display = 'none';
+	// Envía una solicitud al metodo
+	fetch('./components/db/login.php', {
+	  method: 'POST',
+	  headers: {
+		'Content-Type': 'application/json',
+	  },
+	  body: JSON.stringify({email,password}),
+	})
+	.then(response => response.json())
+	.then(data => {
+	  if (data.success) {
+      // Inicio de sesión exitoso      
+      errorMessageLogin.classList.remove('active'); // Ocultar el mensaje de error
+      errorMessageLogin.style.display = 'none';     
+      window.location.replace('main.php');
+  } else {
+		// Muestra el mensaje de error    
+    errorMessageLogin.textContent = data.message;
+		errorMessageLogin.classList.add('active'); // Mostrar el mensaje de error
+	  errorMessageLogin.style.display = 'block';
+	  }
+	});
+  });
+  document.querySelector('.signup-btn').addEventListener('click', (event) => {
+    event.preventDefault(); // Evita que el formulario se envíe de la manera predeterminada
+    
+    // Captura los datos del formulario
+    const user = document.querySelector('.signup input[type="text"]').value;
+    const email = document.querySelector('.signup input[type="email"]').value;
+    const password = document.querySelector('.signup input[type="password"]').value;
+    errorMessageSignup.classList.remove('active'); // Ocultar el mensaje de error
+    errorMessageSignup.style.display = 'none';
+    // Envía una solicitud al metodo
+    fetch('./components/db/register.php', {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({user,email,password}),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Inicio de sesión exitoso
+        errorMessageSignup.classList.remove('active'); // Ocultar el mensaje de error
+        errorMessageSignup.style.display = 'none';
+        window.location.replace('main.php');
+    } else {
+      // Muestra el mensaje de error    
+      errorMessageSignup.textContent = data.message;
+      errorMessageSignup.classList.add('active'); // Mostrar el mensaje de error
+      errorMessageSignup.style.display = 'block';
+      }
+    });
+    });
   

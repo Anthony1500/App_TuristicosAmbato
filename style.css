@@ -39,6 +39,7 @@
   --dl-color-custom-neutral-dark: #27284E;
   --dl-color-custom-neutral-light: #FFFFFF;
   --dl-space-space-oneandhalfunits: 24px;
+  --dl-color-custom-light-grayish-yellow: #faf6e9;
 }
 .button {
   color: var(--dl-color-gray-black);

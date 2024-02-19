@@ -75,12 +75,12 @@ if ($result === false) {
 } else if ($result !== null && count($result) > 0) {
 	
     foreach ($result as $row) {		
-        echo "<h2>" . $row['nombre'] . "</h2>";
-        echo "<p>" . $row['descripcion'] . "</p>";
-		echo "<p><img src='../modal/view.php?id=" . $row['id'] . "&titulo=" . $titulo . "'></p>";
-        echo "<h2>Ubicación</h2>";
-		echo "<div style='position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid black;'>
-        " . $row['ubicacion'] . "</div>";
+              echo "<h2>" . $row['nombre'] . "</h2>";
+              echo "<p>" . $row['descripcion'] . "</p>";
+		      echo "<p><img src='../modal/view.php?id=" . $row['id'] . "&titulo=" . $titulo . "' width='500' height='300'></p>";
+              echo "<h2>Ubicación</h2>";
+		      echo "<div style='position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid black;'>
+              " . $row['ubicacion'] . "</div>";
 
     }
 } else {

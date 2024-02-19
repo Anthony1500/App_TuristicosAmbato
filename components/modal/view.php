@@ -1,68 +1,117 @@
 <?php
-if(!empty($_GET['id']) && !empty($_GET['titulo'])){
-    //DB details
-    require '../db/conexion.php';   
-    
-    //Create connection and select DB
-    $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-    
-    //Check connection
-    if($db->connect_error){
-       die("Connection failed: " . $db->connect_error);
-    }
-    
-    //Get image data from database
-    if (isset($_GET["titulo"])) {
-        $titulo = $_GET["titulo"]; // Accede a la variable enviada desde JavaScript    
-        $titulo = strip_tags($titulo); // Elimina las etiquetas HTML y PHP
-        $titulo = trim($titulo); // Elimina los espacios en blanco al principio y al final
-    
-        // Determina qué consulta SQL ejecutar en función del título
-        switch ($titulo) {
-            case 'Parques':
-                $result = $db->query("SELECT imagen FROM parques WHERE id = {$_GET['id']}");
-                break;
-            case 'Iglesias':
-                $result = $db->query("SELECT imagen FROM iglesias WHERE id = {$_GET['id']}");
-                break;
-            case 'Museos':
-                $result = $db->query("SELECT imagen FROM museos WHERE id = {$_GET['id']}");
-                break;
-            case 'Restaurantes':
-                $result = $db->query("SELECT imagen FROM restaurantes WHERE id = {$_GET['id']}");
-                break;
-            default:
-                echo "Título no reconocido.";
-                exit(); // Termina el script si el título no es reconocido
-        }
-    }
-    
-    
-    if($result->num_rows > 0){
-        $imgData = $result->fetch_assoc();
-        
-        //Get the image type
-        $info = getimagesizefromstring($imgData['imagen']);
+/**
+ * Este archivo maneja la lógica de mostrar imágenes  
+ *
+ * PHP version 8
+ *
+ * @category Images
+ * @package  ImagesPackage
+ * @author   Your Name <your.email@example.com>
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     https://www.itsbolivar.edu.ec/web/index.php
+ */
+// Validar que los parámetros "id" y "titulo" no estén vacíos
+if (!empty($_GET['id']) && !empty($_GET['titulo'])) {
 
-        //Render image
-        switch ($info[2]) {
-            case IMAGETYPE_JPEG:
-                header("Content-type: image/jpeg");
-                break;
-            case IMAGETYPE_PNG:
-                header("Content-type: image/png");
-                break;
-            case IMAGETYPE_JPX:
-                header("Content-type: image/jpg");
-                break;
-            default:
-                echo 'Tipo de imagen no soportado.';
-                exit;
+    // Incluir la conexión a la base de datos
+    include '../db/conexion.php';
+  
+    // Sanitizar la variable "titulo"
+    $titulo = strip_tags($_GET['titulo']);
+    $titulo = trim($titulo);
+  
+    
+    function prepararConsulta($tabla, $id) { //Función preparar la consulta
+        global $db;
+        $query = "SELECT imagen FROM $tabla WHERE id = :id";
+        $result = $db->prepare($query);
+        $result->bindParam(':id', $id);
+        return $result;
+    }
+  
+    // Obtener la consulta SQL según el título
+    switch ($titulo) {
+    case 'Parques':
+        $result = prepararConsulta('parques', $_GET['id']);
+        break;
+    case 'Iglesias':
+        $result = prepararConsulta('iglesias', $_GET['id']);
+        break;
+    case 'Museos':
+        $result = prepararConsulta('museos', $_GET['id']);
+        break;
+    case 'Restaurantes':
+        $result = prepararConsulta('restaurantes', $_GET['id']);
+        break;
+    default:
+        echo "Título no reconocido.";
+        exit();
+    }
+  
+    // Ejecutar la consulta SQL
+    try {
+       
+        $result->execute();
+    } catch (PDOException $e) {
+        echo "Error al ejecutar la consulta: " . $e->getMessage();
+        exit();
+    }
+  
+    // Obtener la imagen
+    $imgData = $result->fetch(PDO::FETCH_ASSOC);
+    
+    // Si se encontró la imagen, enviarla
+    if ($imgData) {
+        // Codificar la imagen a base64
+        $imgDataEncoded = base64_encode($imgData['imagen']);
+    
+        // Obtener el tipo de imagen
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+        $imageType = $finfo->buffer(base64_decode($imgDataEncoded));
+    
+        // Decodificar la imagen y crear un recurso
+        $imagen = imagecreatefromstring(base64_decode($imgDataEncoded));
+    
+        // Iniciar la captura de salida
+        ob_start();
+    
+        // Generar la imagen y capturar la salida
+        switch ($imageType) {
+        case 'image/jpeg':
+            imagejpeg($imagen);
+            break;
+        case 'image/png':
+            imagepng($imagen);
+            break;
+        case 'image/gif':
+            imagegif($imagen);
+            break;
+        default:
+            echo 'Tipo de imagen no soportado.';
+            exit();
         }
-        
-        echo $imgData['imagen']; 
-    }else{
+    
+        // Obtener la imagen generada como una cadena
+        $imagenGenerada = ob_get_contents();
+    
+        // Finalizar la captura de salida
+        ob_end_clean();
+    
+        // Enviar las cabeceras HTTP
+        header("Content-type: " . $imageType);
+        header("Content-Length: " . mb_strlen($imagenGenerada, '8bit'));
+    
+        // Enviar la imagen
+        echo $imagenGenerada;
+    
+        // Liberar memoria
+        imagedestroy($imagen);
+    } else {
         echo 'Imagen no encontrada...';
     }
+
+} else {
+    echo "Parámetros no especificados.";
 }
-?>
+
+  

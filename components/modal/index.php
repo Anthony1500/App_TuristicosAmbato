@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./lista.css">
   <link rel="stylesheet" href="../../style.css">
-  <link rel="stylesheet" href="../../index.css">
+  <link rel="stylesheet" href="../../main.css">
 
 </head>
 <body>

@@ -445,7 +445,14 @@ if (!isset($_SESSION['nombre_usuario'])) {
             data-thq="thq-navbar"
             class="navbarContainer home-navbar-interactive">
 
-            <span class="logo"><img src="components/imagenes/logo.png" alt="Logo" width="70" height="75"></span>
+            <div class="logo-container">
+    <img src="components/imagenes/logo.png" alt="Logo" width="70" height="75">
+    <div class="username">
+        <?php echo $nombre_usuario; ?>
+    </div>
+</div>
+
+
             <div class="home-container01">
               
               <div data-thq="thq-navbar-nav" class="home-desktop-menu">
@@ -499,7 +506,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
         
         <div class="home-features" >  
           <div style="position: relative;">
-    <iframe id="miFrame" src="components/modal/index.php" ></iframe>
+          <iframe id="miFrame" src="components/modal/index.php" ></iframe>
   </div>      
           <div   class="featuresContainer"  >
           <div class="home-features1" >                    
@@ -537,6 +544,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                 </span>
               </div>
               <div class="home-container04">
+                
                 <div class="featuresCard feature-card-feature-card">
                 <img src="components/icons/park.png" class="featuresIcon" alt="Icono de parque">
                   <div class="feature-card-container" id="features">
@@ -552,6 +560,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     </span>
                   </div>
                 </div>
+                
                 <div class="featuresCard feature-card-feature-card">
                 <img src="components/icons/fast-food.png" class="featuresIcon" alt="Icono de restaurante">
                   <div class="feature-card-container">
@@ -601,6 +610,22 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     </span>
                   </div>
                 </div>
+                
+                <div class="featuresCard feature-card-feature-card centered-div" >
+                <img src="components/icons/festival.png" class="featuresIcon" alt="Icono de Eventos Festivos">
+                  <div class="feature-card-container">
+                    <h3 class="feature-card-text heading3">
+                      <span>Eventos Festivos</span>
+                    </h3>
+                    <span class="bodySmall">
+                      <span>
+                      Ambato tiene una variada agenda para este feriado de Carvanal. Ya el fin de semana empezó con un pregón y la elección de su reina. Entre los programas importantes que se desarrollarán está para el sábado 18 la bendición de las flores, frutas y pan en el atrio de la Catedral. 
+                      </span>
+                    </span>
+                  </div>
+                </div>
+
+
               </div>    
  
             </div>

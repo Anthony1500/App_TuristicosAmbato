@@ -56,6 +56,9 @@ if (isset($_GET["titulo"])) {
         case 'Restaurantes':
             $result = $db->query("SELECT * FROM restaurantes");
             break;
+        case 'Eventos Festivos':
+            $result = $db->query("SELECT * FROM eventosfestivos");            
+            break;
         default:
             echo "Título no reconocido.";
             exit(); // Termina el script si el título no es reconocido

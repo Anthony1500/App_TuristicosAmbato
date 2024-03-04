@@ -21,6 +21,28 @@ $data = json_decode(file_get_contents('php://input'), true);
 $correo = $data['email'];
 $password = $data['password'];
 
+// Validación de los datos del formulario
+if (empty($correo) || empty($password)) {
+    echo json_encode(
+        [
+            'success' => false, 
+            'message' => 'Por favor, llena todos los campos'
+        ]
+    );
+    return;
+}
+
+$emailRegex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/';
+if (!preg_match($emailRegex, $correo)) {
+    echo json_encode(
+        [
+            'success' => false, 
+            'message' => 'Por favor, introduce una dirección de correo electrónico válida'
+        ]
+    );
+    return;
+}
+
 // Prepara la consulta SQL
 $stmt = $db->prepare(
     "SELECT * FROM login WHERE correo = :correo AND password = :password"
@@ -49,7 +71,6 @@ if (count($result) > 0) {
         ]
     );
 }
-
 
 $stmt = null;
 $db = null;

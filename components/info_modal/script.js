@@ -30,6 +30,9 @@ if(titulo !== null) {
         case 'Restaurantes':
             h1imagen.src = '../icons/fast-food.png'; // Ruta a la imagen de Restaurantes
             break;
+        case 'Eventos Festivos':			           
+            h1imagen.src = '../icons/festival.png'; // Ruta a la imagen de Eventos Festivos
+            break;
         default:
             h1imagen.src = "../icons/noimagen.png"; // Ruta a la imagen por defecto
     }

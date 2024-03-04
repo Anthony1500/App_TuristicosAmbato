@@ -65,6 +65,12 @@ if (isset($_GET["titulo"]) && isset($_GET["id"])) {
 			$stmt->execute();
 			$result = $stmt->fetchAll();
 			break;
+		case 'Eventos Festivos':			           
+			$stmt = $db->prepare("SELECT * FROM eventosfestivos WHERE id = :id");
+			$stmt->bindParam(':id', $id);
+			$stmt->execute();
+			$result = $stmt->fetchAll();
+			break;
 		default:
             echo "Título no reconocido.";
             exit(); // Termina el script si el título no es reconocido

@@ -117,6 +117,12 @@ document.querySelector('.login-btn').addEventListener('click', (event) => {
   const password = document.querySelector('.login input[type="password"]').value;
   errorMessageLogin.classList.remove('active'); // Ocultar el mensaje de error
   errorMessageLogin.style.display = 'none';
+
+  // Validar los datos del formulario
+  if (!validateFormlogin()) {
+    return; // Si la validación falla, detiene el proceso de envío
+  }
+  
 	// Envía una solicitud al metodo
 	fetch('./components/db/login.php', {
 	  method: 'POST',
@@ -139,7 +145,8 @@ document.querySelector('.login-btn').addEventListener('click', (event) => {
 	  errorMessageLogin.style.display = 'block';
 	  }
 	});
-  });
+});
+
   document.querySelector('.signup-btn').addEventListener('click', (event) => {
     event.preventDefault(); // Evita que el formulario se envíe de la manera predeterminada
     

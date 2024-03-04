@@ -13,7 +13,7 @@ if (isset($_POST["submit"])) {
         $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsername, $dbPassword);
 
         // Preparar consulta SQL
-        $stmt = $db->prepare("INSERT INTO museos (imagen) VALUES (?)");
+        $stmt = $db->prepare("INSERT INTO eventosfestivos (imagen) VALUES (?)");
         $stmt->bindParam(1, $imgContent, PDO::PARAM_LOB);
 
         // Leer la imagen en binario

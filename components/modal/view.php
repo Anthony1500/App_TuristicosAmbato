@@ -10,10 +10,10 @@
  * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     https://www.itsbolivar.edu.ec/web/index.php
  */
-// Validar que los parámetros "id" y "titulo" no estén vacíos
+// Valida que los parámetros "id" y "titulo" no estén vacíos
 if (!empty($_GET['id']) && !empty($_GET['titulo'])) {
 
-    // Incluir la conexión a la base de datos
+    // Incluye la conexión a la base de datos
     include '../db/conexion.php';
   
     // Sanitizar la variable "titulo"
@@ -42,6 +42,9 @@ if (!empty($_GET['id']) && !empty($_GET['titulo'])) {
         break;
     case 'Restaurantes':
         $result = prepararConsulta('restaurantes', $_GET['id']);
+        break;
+    case 'Eventos Festivos':
+        $result = prepararConsulta('eventosfestivos', $_GET['id']);
         break;
     default:
         echo "Título no reconocido.";

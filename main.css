@@ -894,3 +894,16 @@
   color: black; 
   border: 2px solid #f44336; 
 }
+.logo-container {
+  text-align: center;
+}
+
+.username {
+  font-size: 20px; 
+  color: #494058; 
+  font-family: 'Arial', sans-serif; 
+  font-weight: bold; 
+  
+  margin: 10px 0; 
+}
+

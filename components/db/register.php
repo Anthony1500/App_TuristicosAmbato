@@ -22,6 +22,28 @@ $usuario = $data['user'];
 $correo = $data['email'];
 $password = $data['password'];
 
+// Validación de los datos del formulario
+if (empty($usuario) || empty($correo) || empty($password)) {
+    echo json_encode(
+        [
+            'success' => false, 
+            'message' => 'Por favor, llena todos los campos'
+        ]
+    );
+    return;
+}
+
+$emailRegex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/';
+if (!preg_match($emailRegex, $correo)) {
+    echo json_encode(
+        [
+            'success' => false, 
+            'message' => 'Por favor, introduce una dirección de correo electrónico válida'
+        ]
+    );
+    return;
+}
+
 // Prepara la consulta SQL
 $stmt = $db->prepare(
     "INSERT INTO login (nombre_usuario, correo, password) VALUES (:nombre_usuario, :correo, :password)"

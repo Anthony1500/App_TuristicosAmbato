@@ -9,17 +9,17 @@ if (isset($_POST["submit"])) {
             exit();
         }
         $dbHost = 'localhost'; $dbUsername = 'root'; $dbPassword = ''; $dbName = 'ambatolugaresdb'; 
-        // Crear conexión PDO
+        // Crea una conexión PDO
         $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsername, $dbPassword);
 
-        // Preparar consulta SQL
-        $stmt = $db->prepare("INSERT INTO eventosfestivos (imagen) VALUES (?)");
+        // Prepara la consulta SQL
+        $stmt = $db->prepare("INSERT INTO restaurantes (imagen) VALUES (?)");
         $stmt->bindParam(1, $imgContent, PDO::PARAM_LOB);
 
-        // Leer la imagen en binario
+        // Lee la imagen en binario
         $imgContent = file_get_contents($_FILES['image']['tmp_name']);
 
-        // Ejecutar la consulta
+        // Ejecuta la consulta
         if ($stmt->execute()) {
             echo "Archivo subido exitosamente.";
         } else {

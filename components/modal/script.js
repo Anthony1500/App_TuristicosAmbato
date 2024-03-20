@@ -59,3 +59,22 @@ var modal = document.getElementById("miFrame")
         } 
     };
 });
+
+//**************************************************************
+
+var tituloRaw = urlObj.searchParams.get("titulo");
+var titulo = tituloRaw !== null ? tituloRaw.trim() : null;
+var contenedor = document.querySelector(".modal-container-body");
+var fondos = {
+  'Parques': 'url("../imagenes/parque2.jpg")',
+  'Iglesias': 'url("../imagenes/iglesia3.jpg")',
+  'Museos': 'url("../imagenes/museos6.jpg")',
+  'Restaurantes': 'url("../imagenes/restaurante3.jpg")',
+  'Eventos Festivos': 'url("../imagenes/fiestas1.jpg")',
+  'default': '#ffffffcc'
+};
+if(titulo in fondos) {
+  contenedor.style.backgroundImage = fondos[titulo];
+} else {
+  contenedor.style.backgroundImage = fondos['default'];
+}

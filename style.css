@@ -204,8 +204,20 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--dl-color-custom-secondary1);
+  background: linear-gradient(270deg, #f1a7a7, #b4f0b4);
+  background-size: 200% 200%;
+  animation: Gradient 10s ease infinite;
 }
+
+@keyframes Gradient {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 50%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
 .featuresCard {
   width: 100%;
   display: flex;
@@ -286,14 +298,14 @@
   padding-right: var(--dl-space-space-threeunits);
   padding-bottom: var(--dl-space-space-oneandhalfunits);
   justify-content: space-between;
-  background-color: var(--dl-color-custom-neutral-light);
+  
 }
 .mobileMenu {
   color: var(--dl-color-custom-neutral-dark);
   background-color: var(--dl-color-custom-neutral-light);
 }
 .heroContainer {
-  color: var(--dl-color-custom-neutral-dark);
+  color: #ffffff;
   width: 100%;
   display: flex;
   min-height: auto;

@@ -33,13 +33,15 @@
 }
 .home-header {
   width: 100%;
+  height: auto;
   display: flex;
   z-index: 100;
   position: fixed;
   align-items: center;
   flex-direction: column;
-  background-color: var(--dl-color-gray-white);
+  background: linear-gradient(to bottom, rgba(200, 230, 197, 0.897), rgba(255, 255, 255, 0.904));
 }
+
 .home-container01 {
   flex: 0 0 auto;
   width: auto;
@@ -160,6 +162,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
+  z-index: 2;
 }
 .home-hero-sub-heading {
   font-size: 18px;

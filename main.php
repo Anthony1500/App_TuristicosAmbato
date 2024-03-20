@@ -435,13 +435,14 @@ if (!isset($_SESSION['nombre_usuario'])) {
     <link rel="stylesheet" href="./alertdialog.css">
     <div>
       <link href="./main.css" rel="stylesheet" />
-      
+      <link rel="stylesheet" href="./backgroundhome.css">
 
       <div class="home-container" >
        
         <div class="home-header">
          
           <header
+          
             data-thq="thq-navbar"
             class="navbarContainer home-navbar-interactive">
 
@@ -466,13 +467,25 @@ if (!isset($_SESSION['nombre_usuario'])) {
                 Cerrar sesión
              </button>
              </header>
+             
         </div>
-        <div class="home-hero" id="home_container">
+           <div class="main">
+    <div class="d1"></div>
+    <div class="d2"</div>
+    <div class="d3"></div>
+    <div class="d4"></div>
+</div>
+        <div class="home-hero" id="home_container">  
+                  
           <div class="heroContainer home-hero1">
+  
             <div class="home-container02">
+              
               <span class="home-hero-sub-heading bodyLarge">
                 <span>
+                  
                   <span>
+                    
                     <span>Experimenta la magia de Sudamérica</span>
                     <span></span>
                   </span>

@@ -413,7 +413,8 @@ if (!isset($_SESSION['nombre_usuario'])) {
       rel="stylesheet"
       href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
     />
-    
+    <link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/unicons.css'><link rel="stylesheet" href="./buttonuser.css">
+
     <style>
       
       @keyframes fade-in-left {
@@ -466,6 +467,43 @@ if (!isset($_SESSION['nombre_usuario'])) {
              <button class="logout"  onclick="location.href='logout.php'" type="button">
                 Cerrar sesión
              </button>
+             
+             <?php
+require './components/db/conexion.php';
+
+echo '<div class="sec-center buttonuser">';
+echo '<input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>';
+echo '<label class="for-dropdown" for="dropdown">Usuarios registrados <i class="uil uil-arrow-down"></i></label>';
+echo '<div class="section-dropdown">';
+try {
+  $sql = "SELECT nombre_usuario, correo FROM login";
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  
+  $i = 1; // Inicializa el contador
+
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $nombre_usuarioall = trim($row['nombre_usuario']);
+    $correo = trim($row['correo']);
+
+    $subDropdownId = 'dropdown-sub' . $i; // ID único para cada submenú
+
+    echo '<input class="dropdown-sub" type="checkbox" id="' . $subDropdownId . '" name="' . $subDropdownId . '"/>';
+    echo '<label class="for-dropdown-sub" for="' . $subDropdownId . '">' . $nombre_usuarioall . ' <i></i>  ' . $i . '</label>';
+
+    $i++; // Incrementa el contador
+  }
+
+} catch (PDOException $e) {
+  echo "Error: " . $e->getMessage();
+}
+echo '</div>'; 
+echo '</div>'; 
+?>
+
+ 
+
+
              </header>
              
         </div>
@@ -652,6 +690,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
     <script src="./main.js"></script>
     <script src="./alertdialog.js"></script>
     <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <div id="myalertdialog" class="alertdialog">
   <label>
     <input type="checkbox" class="alertCheckbox" autocomplete="off" />

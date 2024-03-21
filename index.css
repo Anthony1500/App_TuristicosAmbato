@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
 
 body {
-  min-height: 92vh;  
+  min-height: 100vh;  
   display: flex;
   align-items: center;
   justify-content: center;

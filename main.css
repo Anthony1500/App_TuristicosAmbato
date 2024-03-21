@@ -49,6 +49,8 @@
   display: flex;
   align-items: space-between;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .home-desktop-menu {
   flex: 1;
@@ -876,15 +878,16 @@
   }
 }
 .logout {
-  
+  font-family: 'Roboto', sans-serif;
   background-color: #f05b51; 
   color: white; 
   padding: 11px 11px; 
   text-align: center; 
   text-decoration: none; 
   display: inline-block;
-  font-size: 12px;
-  height: 35px;  
+  font-size: 15px;
+  height: 35px;
+  width: 220px;  
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 10px;
@@ -898,8 +901,13 @@
   border: 2px solid #f44336; 
 }
 .logo-container {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+
 
 .username {
   font-size: 20px; 

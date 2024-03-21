@@ -66,15 +66,27 @@ var tituloRaw = urlObj.searchParams.get("titulo");
 var titulo = tituloRaw !== null ? tituloRaw.trim() : null;
 var contenedor = document.querySelector(".modal-container-body");
 var fondos = {
-  'Parques': 'url("../imagenes/parque2.jpg")',
-  'Iglesias': 'url("../imagenes/iglesia3.jpg")',
-  'Museos': 'url("../imagenes/museos6.jpg")',
-  'Restaurantes': 'url("../imagenes/restaurante3.jpg")',
-  'Eventos Festivos': 'url("../imagenes/fiestas1.jpg")',
+  'Parques': ['url("../imagenes/parque1.jpg")', 'url("../imagenes/parque2.jpg")', 'url("../imagenes/parque3.png")', 'url("../imagenes/parque4.png")', 'url("../imagenes/parque5.png")'],
+  'Iglesias': ['url("../imagenes/iglesia1.jpg")', 'url("../imagenes/iglesia2.jpg")', 'url("../imagenes/iglesia3.jpg")'],
+  'Museos': ['url("../imagenes/museos1.jpg")', 'url("../imagenes/museos2.jpg")', 'url("../imagenes/museos3.jpg")', 'url("../imagenes/museos4.jpg")', 'url("../imagenes/museos5.jpg")', 'url("../imagenes/museos6.jpg")', 'url("../imagenes/museos7.jpg")'],
+  'Restaurantes': ['url("../imagenes/restaurante1.jpg")', 'url("../imagenes/restaurante2.jpg")', 'url("../imagenes/restaurante3.jpg")', 'url("../imagenes/restaurante4.jpg")', 'url("../imagenes/restaurante5.jpg")'],
+  'Eventos Festivos': ['url("../imagenes/fiestas1.jpg")', 'url("../imagenes/fiestas2.jpg")', 'url("../imagenes/fiestas3.jpg")'],
   'default': '#ffffffcc'
 };
 if(titulo in fondos) {
-  contenedor.style.backgroundImage = fondos[titulo];
+  var imagenes = fondos[titulo].map(function(url) {
+    var img = new Image();
+    img.src = url.slice(5, -2);    
+    return img;
+  });
+
+  var indiceImagen = 0;
+  contenedor.style.backgroundImage = fondos[titulo][indiceImagen];
+
+  setInterval(function() {
+    indiceImagen = (indiceImagen + 1) % imagenes.length; 
+    contenedor.style.backgroundImage = fondos[titulo][indiceImagen];
+  }, 6000); 
 } else {
   contenedor.style.backgroundImage = fondos['default'];
 }

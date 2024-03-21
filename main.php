@@ -480,18 +480,18 @@ try {
   $stmt = $db->prepare($sql);
   $stmt->execute();
   
-  $i = 1; // Inicializa el contador
+  $i = 1; 
 
   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $nombre_usuarioall = trim($row['nombre_usuario']);
     $correo = trim($row['correo']);
 
-    $subDropdownId = 'dropdown-sub' . $i; // ID único para cada submenú
+    $subDropdownId = 'dropdown-sub' . $i; 
 
     echo '<input class="dropdown-sub" type="checkbox" id="' . $subDropdownId . '" name="' . $subDropdownId . '"/>';
     echo '<label class="for-dropdown-sub" for="' . $subDropdownId . '">' . $nombre_usuarioall . ' <i></i>  ' . $i . '</label>';
 
-    $i++; // Incrementa el contador
+    $i++; 
   }
 
 } catch (PDOException $e) {
